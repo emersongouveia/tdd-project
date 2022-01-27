@@ -1,0 +1,2 @@
+Primeira diferença: Os testes funcionais simulam a interação do usuário com o sistema (histórias de usuário). Já os teste de unidade testão trechos específicos de código, testando se o trecho do código comporta-se como esperado.
+Segunda diferença: Os testes funcionais exigem muito do processamento e memória da maquina que executa os testes, e, consequentemente, exigem mais tempo para serem executados. Já os testes de unidade não exigem tanto da maquina e levam menos tempo para ser executado em comparação os testes funcionais.
