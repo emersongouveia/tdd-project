@@ -10,6 +10,10 @@ class NewVisitorTest(unittest.TestCase):
 
     def tearDown(self):
         self.browser.quit()
+    def check_for_row_in_list_table(self, row_text):
+        table = self.browser.find_element_by_id('id_list_table')
+        rows = table.find_elements_by_tag_name('tr')
+        self.assertIn(row_text, [row.text for row in rows])
 
     def test_can_start_a_list_and_retrieve_it_later(self): 
     
@@ -28,7 +32,7 @@ class NewVisitorTest(unittest.TestCase):
         # Ela digita "Estudar testes funcionais" em uma caixa de texto
         inputbox.send_keys('Estudar testes funcionais')
 
-        # Quando ela aperta enter, a página atualiza, e mostra a lista
+                # Quando ela aperta enter, a página atualiza, e mostra a lista
         # "1: Estudar testes funcionais" como um item da lista TODO
         inputbox.send_keys(Keys.ENTER)
         time.sleep(1)
@@ -45,17 +49,12 @@ class NewVisitorTest(unittest.TestCase):
         self.check_for_row_in_list_table('1: Estudar testes funcionais')
         self.check_for_row_in_list_table('2: Estudar testes de unidade')
 
-
         # Maria se pergunta se o site vai lembrar da sua lista. Então, ela verifica que
-        # o site gerou uma URL única para ela -- existe uma explicação sobre essa feature
+        # o site gerou uma URL únicga para ela -- existe uma explicação sobre essa feature
 
         # Ela visita a URL: a sua lista TODO ainda está armazenada
 
         # Satisfeita, ela vai dormir
-    def check_for_row_in_list_table(self, row_text):
-        table = self.browser.find_element_by_id('id_list_table')
-        rows = table.find_elements_by_tag_name('tr')
-        self.assertIn(row_text, [row.text for row in rows])
 
 if __name__ == '__main__':
     unittest.main()
